@@ -1,30 +1,36 @@
+const Port = require("./Port");
+
 const x = Number
 isAtDock = true
 
 
-function Ship(name, portName){
-    this.name = name
-    this.startingPort = 'Dover'
-    this.passengers = []
-}
 
+function Ship(currentPort){
+    this.currentPort = currentPort
+    this.passengers = []
+
+}
 Ship.prototype.isAtDock = function () {
     if(isAtDock === true){
-        return true
+        return ("Ship is currently at  "+ `${this.currentPort}`)
 }   if (isAtDock === false){
-    return false
+    return ('Ship is out to sea')
 }
 
-}
+};
 Ship.prototype.board = function(x){
     this.passengers.push(x)
-    console.log(`${this.passengers}` + ' passengers have now boarded '+ `${this.name}`)
+    console.log(`${this.passengers}` + ' passengers have now boarded' )
 };
-    Ship.prototype.setSail = function(){
+Ship.prototype.setSail = function(){
         isAtDock = !isAtDock 
-        console.log(`${this.name}`+' has set sail from '+ `${this.startingPort}`)
-    }
+        console.log( 'Ship has set sail')
+};
+Ship.prototype.dock = function(newPort){
+    return this.currentPort = newPort
 
 
+}
 
 module.exports = Ship
+
