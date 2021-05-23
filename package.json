@@ -2,7 +2,7 @@
   "name": "cruise-ships",
   "version": "1.0.0",
   "description": "cruise ships track",
-  "main": "index.js",
+  "main": "cruise-ships.js",
   "scripts": {
     "test": "jest"
   },
