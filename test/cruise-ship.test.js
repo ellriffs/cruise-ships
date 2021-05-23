@@ -6,9 +6,9 @@ describe('Ship', () =>{
     it('defines if ship is a constructor', () =>{
     expect(ship).toBeInstanceOf(Object)
     })
-    it('has a starting point', ()=>{
-        const ship = new Ship ('dowver')
-        expect(ship.startingPoint).toBe('Dover')
+    it('has a starting port', ()=>{
+        const ship = new Ship ('the queen mary')
+        expect(ship.startingPort).toBe('Dover')
     })
     it('returns number of passengers to the array', ()=>{
     expect(ship.passengers).toEqual([])
@@ -20,7 +20,10 @@ describe('Ship', () =>{
     })
     it('notifies the captain of the ship setting sail from current starting point', ()=>{
         ship.setSail()
-        expect(ship.startingPoint).toBeFalsy()
+        expect(isAtDock).toBeFalsy()
+    })
+    it('will return whether ship is currently docked', () => {
+       
     })
     
 })
