@@ -1,36 +1,38 @@
-const Port = require("./Port");
 
 const x = Number
-isAtDock = true
 
 
-
-function Ship(currentPort){
-    this.currentPort = currentPort
-    this.passengers = []
-
+function Ship(itinerary){
+    this.itinerary = itinerary;
+    this.currentPort = itinerary.ports[0];
+    this.previousPort = null;
+    this.passengers = [];
+    this.docked = true;
 }
-Ship.prototype.isAtDock = function () {
-    if(isAtDock === true){
-        return ("Ship is currently at  "+ `${this.currentPort}`)
-}   if (isAtDock === false){
-    return ('Ship is out to sea')
-}
-
-};
-Ship.prototype.board = function(x){
+Ship.prototype = {
+    
+    board(x){
     this.passengers.push(x)
-    console.log(`${this.passengers}` + ' passengers have now boarded' )
-};
-Ship.prototype.setSail = function(){
-        isAtDock = !isAtDock 
-        console.log( 'Ship has set sail')
-};
-Ship.prototype.dock = function(newPort){
-    return this.currentPort = newPort
+},
 
+    setSail(){
+    const itinerary = this.itinerary;
+    const currentPortIndex = itinerary.ports.indexOf(this.currentPort);
 
+    if (currentPortIndex === (itinerary.ports.length - 1)) {
+    throw new Error('End of itinerary reached');
+    }
+    this.previousPort = this.currentPort;
+    this.currentPort = null;
+},
+
+    dock(){
+    const itinerary = this.itinerary;
+    const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
+
+    this.currentPort = itinerary.ports[previousPortIndex + 1]
 }
+};
 
 module.exports = Ship
 
