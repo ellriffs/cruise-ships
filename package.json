@@ -4,7 +4,7 @@
   "description": "cruise ships track",
   "main": "cruise-ships.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --verbose"
   },
   "repository": {
     "type": "git",

@@ -1,38 +1,38 @@
-
+const port = require('./Port')
 const x = Number
 
 
-function Ship(itinerary){
-    this.itinerary = itinerary;
-    this.currentPort = itinerary.ports[0];
-    this.previousPort = null;
-    this.passengers = [];
-    this.docked = true;
-}
-Ship.prototype = {
+class Ship {
+        constructor(itinerary) {
+        this.itinerary = itinerary;
+        this.currentPort = itinerary.ports[0];
+        this.previousPort = null;
+        this.passengers = [];
+        this.currentPort.addShip(this)
     
-    board(x){
-    this.passengers.push(x)
-},
-
-    setSail(){
-    const itinerary = this.itinerary;
-    const currentPortIndex = itinerary.ports.indexOf(this.currentPort);
-
-    if (currentPortIndex === (itinerary.ports.length - 1)) {
-    throw new Error('End of itinerary reached');
     }
-    this.previousPort = this.currentPort;
-    this.currentPort = null;
-},
+    board(x) {
+        this.passengers.push(x);
+    }
 
-    dock(){
-    const itinerary = this.itinerary;
-    const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
-
-    this.currentPort = itinerary.ports[previousPortIndex + 1]
-}
-};
+    setSail() {
+        const itinerary = this.itinerary;
+        const currentPortIndex = itinerary.ports.indexOf(this.currentPort);
+        if (currentPortIndex === (itinerary.ports.length - 1)) {
+        throw new Error('End of itinerary reached');
+        }
+        this.previousPort = this.currentPort;
+        this.currentPort = false;
+        this.previousPort.removeShip()
+    }
+    dock() {
+        const itinerary = this.itinerary;
+        const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
+        this.currentPort = itinerary.ports[previousPortIndex + 1];
+        this.currentPort.addShip(this)
+        }
+    }
+    
 
 module.exports = Ship
 

@@ -8,8 +8,8 @@ const Itinerary = require('../src/Itineraries');
 describe('Ship', () =>{
     const port = new Port ('Dover')
     const itinerary = new Itinerary([port])
-    const ship =new Ship (itinerary)
-    it('can be instansiated', () =>{
+    const ship = new Ship (itinerary)
+    it('can be instantiated', () =>{
     expect(ship).toBeInstanceOf(Object)
     })
 
@@ -38,6 +38,7 @@ describe('Ship', () =>{
 
         ship.setSail();
         expect(ship.currentPort).toBeFalsy();
+        expect(dover.ships).not.toContain(ship)
     })
     
     it('can dock at a different port', ()=>{
@@ -49,6 +50,7 @@ describe('Ship', () =>{
         ship.setSail();
         ship.dock();
         expect(ship.currentPort).toBe(calais);
+        expect(calais.ships).toContain(ship);
     })
 
     it('cant set sail further than its itinerary',()=>{
@@ -61,5 +63,13 @@ describe('Ship', () =>{
         ship.dock();
 
         expect(() => ship.setSail()).toThrowError('End of itinerary reached');
+    })
+    
+    it('gets added to the port on instantiation',()=>{
+        const dover = new Port ('Dover');
+        const itinerary = new Itinerary([dover]);
+        const ship = new Ship(itinerary);
+
+        expect(dover.ships).toContain(ship)
     })
 })
