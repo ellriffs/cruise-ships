@@ -1,5 +1,5 @@
 const port = require('./Port')
-const x = Number
+const passenger = Number
 
 
 class Ship {
@@ -7,15 +7,9 @@ class Ship {
         this.itinerary = itinerary;
         this.currentPort = itinerary.ports[0];
         this.previousPort = null;
-        this.passengers = [];
         this.currentPort.addShip(this)
-    
     }
-    board(x) {
-        this.passengers.push(x);
-    }
-
-    setSail() {
+        setSail() {
         const itinerary = this.itinerary;
         const currentPortIndex = itinerary.ports.indexOf(this.currentPort);
         if (currentPortIndex === (itinerary.ports.length - 1)) {
@@ -25,7 +19,7 @@ class Ship {
         this.currentPort = false;
         this.previousPort.removeShip()
     }
-    dock() {
+        dock() {
         const itinerary = this.itinerary;
         const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
         this.currentPort = itinerary.ports[previousPortIndex + 1];
