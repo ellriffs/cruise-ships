@@ -14,7 +14,7 @@ describe('Ship', () =>{
             dover = new Port('Dover');
             calais = new Port('Calais')
             itinerary = new Itinerary([dover, calais]);
-            ship = new Ship(itinerary);
+            ship = new Ship (itinerary);
             
         });
 

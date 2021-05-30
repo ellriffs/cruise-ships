@@ -8,7 +8,7 @@ describe('Port',()=>{
 
     beforeEach(()=>{
         port = new Port ('Dover');
-        ship ={}
+        ship =  jest.fn()
         titanic = {}
         queenMary = {}
     })
@@ -27,7 +27,7 @@ describe('Port',()=>{
     port.addShip(titanic);
     port.addShip(queenMary);
     port.removeShip(queenMary);
-    
+
     expect(port.ships).toEqual([titanic]);  
     })
 });
