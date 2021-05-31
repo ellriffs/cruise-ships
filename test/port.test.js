@@ -7,14 +7,14 @@ describe('Port',()=>{
     let queenMary;
 
     beforeEach(()=>{
-        port = new Port ('Dover');
+        port = new Port ('Dubai');
         ship =  jest.fn()
         titanic = {}
         queenMary = {}
     })
     it('can be instantiated',()=>{
 
-    expect(port).toBeInstanceOf(Object)
+    expect(port).toBeInstanceOf(Port)
     })
 
     it('adds ship',()=>{

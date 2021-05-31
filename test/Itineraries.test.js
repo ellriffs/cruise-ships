@@ -1,17 +1,24 @@
 const Itinerary = require('../src/Itineraries')
-const Port = require('../src/Port')
+
+let ports;
+let dubai;
+let losAngeles;
+let itinerary;
 
 
-describe('Itineraries', ()=>{
-    it('can be instanciated', ()=>{
-        expect(Itinerary).toBeInstanceOf(Object)
+describe('Itinerary', ()=>{
+    beforeEach(()=>{
+        dover = jest.fn()
+        calais = jest.fn()
+        ports = [dubai, losAngeles]
+        itinerary = new Itinerary(ports);
+
+    })
+    it('can be instantiated', ()=>{
+        expect(itinerary).toBeInstanceOf(Itinerary)
     })
 
     it('can have ports', ()=>{
-        const dover =  jest.fn();
-        const calais = jest.fn();
-
-        const itinerary = new Itinerary([dover, calais]);
-        expect(itinerary.ports).toEqual([dover, calais])
+        expect(itinerary.ports).toEqual([dubai, losAngeles])
     })
 })

@@ -1,5 +1,5 @@
 const port = require('./Port')
-const passenger = Number
+
 
 
 class Ship {
