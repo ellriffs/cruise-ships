@@ -11,5 +11,8 @@
     "url": "keywords: https://github.com/ellriffs/cruise-ships.git"
   },
   "author": "Elliot Robertson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.0.3"
+  }
 }
