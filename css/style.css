@@ -18,15 +18,21 @@ body{
     overflow-x: auto;
     
 }
-#Ports{
-    width: 0px;
+#ports{
     margin-top: 96px;
     display: flex;
     justify-content: space-around;
 }
 
-#Ports > .port{
+#ports > .port{
     width: 64px;
     height: 32px;
     background-image: url(/images/images/port.png);
+}
+
+#ship{
+    width: 128px;
+    height: 64px;
+    background-image: url('../images/images/ship.png');
+    position: absolute;
 }

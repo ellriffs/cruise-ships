@@ -10,16 +10,36 @@
 </head>
 <body>
     <div id="viewport">
-        <div id="Ports" data-port-name="New York City" data-port-index="0"></div>
+        <div id="ship"></div>
+        <div id="ports">
+            <div class="port" data-port-name="Dubai" data-port-index="0"></div>
+            <div class="port" data-port-name="London" data-port-index="0"></div>
+            <div class="port" data-port-name="Los-Angeles" data-port-index="0"></div>
+            <div class="port" data-port-name="Calais" data-port-index="0"></div>
+            <div class="port" data-port-name="Dover" data-port-index="0"></div>
+        </div>
+        
     </div>
-    </div>
-    <script src="/src/controller.js" ></script>
+</div>
+
+    <script src="/src/controller.js"></script>
     <script src="/src/Port.js"></script>
-    <script src="/src/Itineraries.js"></script>
+    <scrip src="/src/Itinerary.js"></scrip>
+    <script src="/src/cruise-ships.js"></script> 
     <script>
         const controller = new Controller();
+        const itinerary = new Itinerary([
+            new Port('Dubai'),
+            new Port('London'),
+            new Port('Los-Angeles'),
+            new Port ('Calais'),
+            new Port ('Dover'),
+    ]);
+        controller.renderPorts(itinerary.ports)
+        const ship = new Ship(itinerary)
+        controller.renderShip(ship)
     
-    
-    </script>
-</body>
+        
+        </script>
+    </body>
 </html>

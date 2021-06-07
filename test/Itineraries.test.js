@@ -1,4 +1,4 @@
-const Itinerary = require('../src/Itineraries')
+const Itinerary = require('../src/Itinerary')
 
 let ports;
 let dubai;
@@ -8,8 +8,8 @@ let itinerary;
 
 describe('Itinerary', ()=>{
     beforeEach(()=>{
-        dover = jest.fn()
-        calais = jest.fn()
+        dubai = jest.fn()
+        losAngeles = jest.fn()
         ports = [dubai, losAngeles]
         itinerary = new Itinerary(ports);
 

@@ -1,5 +1,5 @@
 
-
+(function exportShip(){
 const passenger = Number
 
 
@@ -10,7 +10,6 @@ class Ship {
         this.currentPort = itinerary.ports[0];
         this.previousPort = null;
         this.currentPort.addShip(this)
-        this.currentPort.removeShip(this)
     }
         setSail() {
         const currentPortIndex = itinerary.ports.indexOf(this.currentPort);
@@ -19,7 +18,7 @@ class Ship {
         }
         this.previousPort = this.currentPort;
         this.currentPort = false;
-        this.previousPort.removeShip()
+        this.previousPort.removeShip(this)
     }
         dock() {
         const itinerary = this.itinerary;
@@ -31,8 +30,12 @@ class Ship {
     board() {
         this.passengers.push(passenger)
     }
-    }
+}
     
 
-module.exports = Ship
-
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = Ship;
+    } else {
+        window.Ship = Ship;
+    };
+    }());
