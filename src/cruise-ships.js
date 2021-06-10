@@ -1,6 +1,5 @@
 
 (function exportShip(){
-const passenger = Number
 
 
 class Ship {
@@ -28,7 +27,8 @@ class Ship {
     }
 
     board() {
-        this.passengers.push(passenger)
+        const passenger = Number
+    this.passengers.push(passenger)
     }
 }
     

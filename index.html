@@ -7,39 +7,44 @@
     <title>Cruise Ships</title>
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet"  href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="viewport">
-        <div id="ship"></div>
-        <div id="ports">
-            <div class="port" data-port-name="Dubai" data-port-index="0"></div>
-            <div class="port" data-port-name="London" data-port-index="0"></div>
-            <div class="port" data-port-name="Los-Angeles" data-port-index="0"></div>
-            <div class="port" data-port-name="Calais" data-port-index="0"></div>
-            <div class="port" data-port-name="Dover" data-port-index="0"></div>
-        </div>
-        
-    </div>
-</div>
 
-    <script src="/src/controller.js"></script>
-    <script src="/src/Port.js"></script>
-    <scrip src="/src/Itinerary.js"></scrip>
-    <script src="/src/cruise-ships.js"></script> 
-    <script>
-        const controller = new Controller();
-        const itinerary = new Itinerary([
-            new Port('Dubai'),
-            new Port('London'),
-            new Port('Los-Angeles'),
-            new Port ('Calais'),
-            new Port ('Dover'),
+    <p id="CurrentPort">Current Port:</p>
+    <p id="NextPort">Next Port:</p>
+    <p id="Passengers">Passengers:</p>
+    <button id="sailbutton">Set Sail!</button>
+    <button id="boardbutton">All Aboard!</button>
+    <button id="resetbutton">Reset!</button>
+    <div id="viewport">
+        <div id="ports">
+            <div id="message">Testing</div>    
+        </div>
+        <div id="ship">
+    </div>
+<script src="src/Controller.js"></script>
+<script src="/src/Port.js"></script>
+<script src="/src/Itinerary.js"></script>
+<script src="./src/cruise-ships.js"></script>
+<script>
+    const itinerary = new Itinerary ([
+        new Port ('Dubai'),
+        new Port ('Los Angeles'),
+        new Port ('Dover'),
+        new Port('Calais')
     ]);
-        controller.renderPorts(itinerary.ports)
-        const ship = new Ship(itinerary)
-        controller.renderShip(ship)
-    
-        
-        </script>
-    </body>
+    const ship = new Ship(itinerary);
+    const controller = new Controller(ship);
+    controller.renderPorts(itinerary.ports);
+    controller.renderShip();
+    controller.initialiseSea()
+</script>
+
+</script>
+</body>
 </html>
